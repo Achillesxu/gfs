@@ -1,4 +1,2 @@
-# GoFrame Template For SingleRepo
-
-Quick Start: 
-- https://goframe.org/quick
+# GFS 
+gfs api server with goframe
