@@ -1,4 +1,4 @@
-package system
+package sys_login
 
 import (
 	"context"
@@ -6,9 +6,9 @@ import (
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
 
-	"gfs/api/system/v1"
+	"gfs/api/sys_login/v1"
 )
 
-func (c *ControllerV1) UserLogin(ctx context.Context, req *v1.UserLoginReq) (res *v1.UserLoginRes, err error) {
+func (c *ControllerV1) UserLogout(ctx context.Context, req *v1.UserLogoutReq) (res *v1.UserLogoutRes, err error) {
 	return nil, gerror.NewCode(gcode.CodeNotImplemented)
 }

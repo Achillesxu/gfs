@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"gfs/internal/controller/sys_login"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -21,6 +22,7 @@ var (
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
 					hello.NewV1(),
+					sys_login.NewV1(),
 				)
 			})
 			s.Run()

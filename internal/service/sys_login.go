@@ -7,28 +7,27 @@ package service
 
 import (
 	"context"
-	v1 "gfs/api/system/v1"
+	v1 "gfs/api/sys_login/v1"
 )
 
 type (
-	ISysUser interface {
+	ISysLogin interface {
 		UserLogin(ctx context.Context, req *v1.UserLoginReq) (res *v1.UserLoginRes, err error)
 		UserLogout(ctx context.Context, req *v1.UserLogoutReq) (res *v1.UserLogoutRes, err error)
 	}
 )
 
 var (
-	localSysUser ISysUser
+	localSysLogin ISysLogin
 )
 
-func SysUser() ISysUser 
-func SysUser() ISysUser {
-	if localSysUser == nil {
-		panic("implement not found for interface ISysUser, forgot register?")
+func SysLogin() ISysLogin {
+	if localSysLogin == nil {
+		panic("implement not found for interface ISysLogin, forgot register?")
 	}
-	return localSysUser
+	return localSysLogin
 }
 
-func RegisterSysUser(i ISysUser) {
-	localSysUser = i
+func RegisterSysLogin(i ISysLogin) {
+	localSysLogin = i
 }

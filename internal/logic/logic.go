@@ -5,5 +5,5 @@
 package logic
 
 import (
-	_ "gfs/internal/logic/sysUser"
+	_ "gfs/internal/logic/sysLogin"
 )
