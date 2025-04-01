@@ -10,6 +10,11 @@ type LoginUserRes struct {
 	UserNickname string `orm:"user_nickname"    json:"userNickname"` // 用户昵称
 	UserPassword string `orm:"user_password"    json:"userPassword"` // 登录密码;cmf_password加密
 	UserSalt     string `orm:"user_salt"        json:"userSalt"`     // 加密盐
-	UserStatus   uint   `orm:"user_status"      json:"userStatus"`   // 用户状态;0:禁用,1:正常,2:未验证
+	Status       uint   `orm:"status"           json:"status"`       // 用户状态;0:禁用,1:正常,2:未验证
 	IsAdmin      int    `orm:"is_admin"         json:"isAdmin"`      // 是否后台管理员 1:是, 0:否
+}
+
+type CaptchaInput struct {
+	Id   string
+	Code string
 }

@@ -2,13 +2,12 @@ package cmd
 
 import (
 	"context"
+	"gfs/internal/controller/captcha"
 	"gfs/internal/controller/sys_login"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
-
-	"gfs/internal/controller/hello"
 )
 
 var (
@@ -21,7 +20,7 @@ var (
 			s.Group("/", func(group *ghttp.RouterGroup) {
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
-					hello.NewV1(),
+					captcha.NewV1(),
 					sys_login.NewV1(),
 				)
 			})

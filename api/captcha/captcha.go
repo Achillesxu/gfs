@@ -2,14 +2,14 @@
 // Code generated and maintained by GoFrame CLI tool. DO NOT EDIT.
 // =================================================================================
 
-package hello
+package captcha
 
 import (
 	"context"
 
-	"gfs/api/hello/v1"
+	"gfs/api/captcha/v1"
 )
 
-type IHelloV1 interface {
-	Hello(ctx context.Context, req *v1.HelloReq) (res *v1.HelloRes, err error)
+type ICaptchaV1 interface {
+	Captcha(ctx context.Context, req *v1.CaptchaReq) (res *v1.CaptchaRes, err error)
 }

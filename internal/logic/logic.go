@@ -5,5 +5,7 @@
 package logic
 
 import (
+	_ "gfs/internal/logic/captcha"
 	_ "gfs/internal/logic/sysLogin"
+	_ "gfs/internal/logic/sysUser"
 )

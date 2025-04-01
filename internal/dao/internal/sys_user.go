@@ -26,11 +26,11 @@ type SysUserColumns struct {
 	UserNickname  string // 用户昵称
 	UserPassword  string // 登录密码;cmf_password加密
 	UserSalt      string // 加密盐
-	UserStatus    string // 用户状态;0:禁用,1:正常,2:未验证
+	Status        string // 用户状态;0:禁用,1:正常,2:未验证
 	Mobile        string // 中国手机不带国家代码，国际手机号格式为：国家代码-手机号
-	UserEmail     string // 用户登录邮箱
+	Email         string // 用户登录邮箱
+	IsAdmin       string // 是否后台管理员 1:是, 0:否
 	Remark        string // 备注
-	IsAdmin       string // 是否后台管理员 1 是  0   否
 	LastLoginIp   string // 最后登录ip
 	LastLoginTime string // 最后登录时间
 	CreatedAt     string // 创建时间
@@ -45,11 +45,11 @@ var sysUserColumns = SysUserColumns{
 	UserNickname:  "user_nickname",
 	UserPassword:  "user_password",
 	UserSalt:      "user_salt",
-	UserStatus:    "user_status",
+	Status:        "status",
 	Mobile:        "mobile",
-	UserEmail:     "user_email",
-	Remark:        "remark",
+	Email:         "email",
 	IsAdmin:       "is_admin",
+	Remark:        "remark",
 	LastLoginIp:   "last_login_ip",
 	LastLoginTime: "last_login_time",
 	CreatedAt:     "created_at",
