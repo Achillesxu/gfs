@@ -1,0 +1,60 @@
+# https://goframe.org/docs/web/server-config-file-template
+server:
+  address: ":8800"
+  serverRoot: "resource/public"
+  dumpRouterMap: true
+  routeOverWrite: true
+  openapiPath: "/api.json"
+  swaggerPath: "/swagger"
+  NameToUriType: 3
+  maxHeaderBytes: "20KB"
+  clientMaxBodySize: "50MB"
+
+# https://goframe.org/docs/core/glog-config
+logger:
+  path: "resource/log/run"
+  file: "{Y-m-d}.log"
+  level: "all"
+  stdout: true
+
+# https://goframe.org/docs/core/gdb-config-file
+# Database.
+database:
+  logger:
+    level:   "all"
+    stdout:  true
+    Path: "resource/log/sql"
+
+  default:
+    link:   "mysql:root:xsy@tcp(127.0.0.1:3316)/gfs?charset=utf8mb4&parseTime=true&loc=Local"
+    debug:  true
+    charset: "utf8mb4" #数据库编码
+    dryRun: false #空跑
+    maxIdle: 10 #连接池最大闲置的连接数
+    maxOpen: 10 #连接池最大打开的连接数
+    maxLifetime: "30s" #(单位秒)连接对象可重复使用的时间长度
+
+# Redis 配置示例
+redis:
+  default:
+    address: 127.0.0.1:6379
+    db: 1
+    pass: xsy
+    idleTimeout: "60s" #连接最大空闲时间，使用时间字符串例如30s/1m/1d
+    maxConnLifetime: "90s" #连接最长存活时间，使用时间字符串例如30s/1m/1d
+    waitTimeout: "60s" #等待连接池连接的超时时间，使用时间字符串例如30s/1m/1d
+    dialTimeout: "30s" #TCP连接的超时时间，使用时间字符串例如30s/1m/1d
+    readTimeout: "30s" #TCP的Read操作超时时间，使用时间字符串例如30s/1m/1d
+    writeTimeout: "30s" #TCP的Write操作超时时间，使用时间字符串例如30s/1m/1d
+    maxActive: 100
+
+gfToken:
+  cacheKey: "gfToken:"
+  timeOut: 10800
+  maxRefresh: 5400
+  multiLogin: true
+  encryptKey: "49c54195e750b04e74a8429b17896586"
+  cacheModel: "redis"  #缓存模式 memory OR redis OR dist
+  distPath: "./resource/data/distTokenDb" #使用磁盘缓存时配置数据缓存的目录
+  excludePaths:
+    - "/api/v1/system/login"
