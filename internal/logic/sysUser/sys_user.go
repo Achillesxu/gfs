@@ -85,12 +85,10 @@ func (s *sSysUser) UserNameOrMobileExists(ctx context.Context, userName, mobile 
 	}
 	if user.UserName == userName {
 		err = gerror.NewCode(gcode.CodeInvalidParameter, "用户名已存在")
-		g.Log().Error(ctx, err)
 		return
 	}
 	if user.Mobile == mobile {
 		err = gerror.NewCode(gcode.CodeInvalidParameter, "手机号已存在")
-		g.Log().Error(ctx, err)
 		return
 	}
 	return
@@ -103,19 +101,16 @@ func (s *sSysUser) GetUserByUsernamePassword(ctx context.Context, req *loginV1.U
 	}
 	if g.IsNil(user) {
 		err = gerror.NewCode(gcode.CodeInvalidParameter, "账号不存在")
-		g.Log().Error(ctx, err, req)
 		return
 	}
 	// 验证密码
 	if utility.EncryptPassword(req.Password, user.UserSalt) != user.UserPassword {
 		err = gerror.NewCode(gcode.CodeInvalidParameter, "账号密码错误")
-		g.Log().Error(ctx, err, req)
 		return
 	}
 	// 账号状态
 	if user.Status == 0 {
 		err = gerror.NewCode(gcode.CodeInvalidParameter, "账号已被冻结")
-		g.Log().Error(ctx, err, req)
 		return
 	}
 	return
