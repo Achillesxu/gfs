@@ -50,7 +50,7 @@ func (rs *CaptchaRedisStore) Get(key string, clear bool) string {
 	}
 
 	if clear {
-		_, err := redis.Del(rs.Context, key)
+		_, err := redis.Del(rs.Context, rs.PreKey+key)
 		if err != nil {
 			g.Log().Errorf(gctx.New(), "RedisCaptchaStore Get(%s, %t) Del %#v", key, clear, err)
 			return ""

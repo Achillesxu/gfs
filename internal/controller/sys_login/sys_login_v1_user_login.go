@@ -13,7 +13,7 @@ import (
 
 func (c *ControllerV1) UserLogin(ctx context.Context, req *v1.UserLoginReq) (res *v1.UserLoginRes, err error) {
 	var user *model.LoginUserRes
-	if service.Captcha().VerifyCaptcha(ctx, &model.CaptchaInput{
+	if !service.Captcha().VerifyCaptcha(ctx, &model.CaptchaInput{
 		Id:   req.VerifyId,
 		Code: req.VerifyCode,
 	}) {

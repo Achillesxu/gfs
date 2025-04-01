@@ -56,8 +56,9 @@ func (s *sCaptcha) Captcha(ctx context.Context, req *v1.CaptchaReq) (res *v1.Cap
 }
 
 func (s *sCaptcha) VerifyCaptcha(ctx context.Context, in *model.CaptchaInput) bool {
-	if in.Id != "" && in.Code != "" && s.Store.Verify(in.Id, in.Code, true) {
-		return true
+	if in.Id != "" && in.Code != "" {
+		v := s.Store.Verify(in.Id, in.Code, true)
+		return v
 	} else {
 		return false
 	}
