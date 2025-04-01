@@ -53,7 +53,7 @@ gfToken:
   timeOut: 10800
   maxRefresh: 5400
   multiLogin: true
-  encryptKey: "49c54195e750b04e74a8429b17896586"
+  encryptKey: "64a13c8e7b9d5f2a1e8c3d4b0f7a6b5c"
   cacheModel: "redis"  #缓存模式 memory OR redis OR dist
   distPath: "./resource/data/distTokenDb" #使用磁盘缓存时配置数据缓存的目录
   excludePaths:

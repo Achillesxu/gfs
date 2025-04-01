@@ -2,8 +2,10 @@ package cmd
 
 import (
 	"context"
+	"gfs/internal/consts"
 	"gfs/internal/controller/captcha"
 	"gfs/internal/controller/sys_login"
+	"github.com/gogf/gf/v2/os/glog"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -16,8 +18,10 @@ var (
 		Usage: "main",
 		Brief: "start http server",
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
+			g.Log().SetFlags(glog.F_ASYNC | glog.F_TIME_DATE | glog.F_TIME_TIME | glog.F_FILE_LONG)
+			g.Log().Info(ctx, "GFS\t", "Version:", consts.Version)
 			s := g.Server()
-			s.Group("/", func(group *ghttp.RouterGroup) {
+			s.Group("/api/v1", func(group *ghttp.RouterGroup) {
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
 					captcha.NewV1(),
