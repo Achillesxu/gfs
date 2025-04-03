@@ -5,6 +5,8 @@ import (
 	"gfs/internal/consts"
 	"gfs/internal/controller/captcha"
 	"gfs/internal/controller/sys_login"
+	"gfs/internal/controller/sys_user"
+	"gfs/internal/service"
 	"github.com/gogf/gf/v2/os/glog"
 
 	"github.com/gogf/gf/v2/frame/g"
@@ -27,6 +29,13 @@ var (
 					captcha.NewV1(),
 					sys_login.NewV1(),
 				)
+				group.Group("/", func(group *ghttp.RouterGroup) {
+					_ = service.GfToken().Middleware(group)
+					group.Middleware(service.Middleware().Ctx, service.Middleware().Auth)
+					group.Bind(
+						sys_user.NewV1(),
+					)
+				})
 			})
 			s.Run()
 			return nil

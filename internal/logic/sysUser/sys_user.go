@@ -15,6 +15,7 @@ import (
 	"gfs/internal/model/entity"
 	"gfs/internal/service"
 	"gfs/utility"
+	"github.com/gogf/gf/v2/container/gset"
 	"github.com/gogf/gf/v2/database/gdb"
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
@@ -31,6 +32,14 @@ func init() {
 
 func New() *sSysUser {
 	return &sSysUser{}
+}
+
+func (s *sSysUser) NotCheckAuthAdminIds(ctx context.Context) *gset.Set {
+	ids := g.Cfg().MustGet(ctx, "system.notCheckAuthAdminIds")
+	if !g.IsNil(ids) {
+		return gset.NewFrom(ids)
+	}
+	return gset.New()
 }
 
 func (s *sSysUser) AddUser(ctx context.Context, req *userV1.UserAddReq) (err error) {

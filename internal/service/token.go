@@ -23,13 +23,13 @@ type IGfToken interface {
 
 var gt IGfToken
 
-func RegisterGToken(gtk IGfToken) {
-	gt = gtk
-}
-
 func GfToken() IGfToken {
 	if gt == nil {
 		panic("implement not found for interface IGfToken, forgot register?")
 	}
 	return gt
+}
+
+func RegisterGToken(gtk IGfToken) {
+	gt = gtk
 }

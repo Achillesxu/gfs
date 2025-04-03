@@ -58,3 +58,11 @@ gfToken:
   distPath: "./resource/data/distTokenDb" #使用磁盘缓存时配置数据缓存的目录
   excludePaths:
     - "/api/v1/system/login"
+
+system:
+  notCheckAuthAdminIds: [1,45]  #无需验证后台权限的用户id
+  dataDir: "./resource/data"
+  cache:
+    model: "redis"  #缓存模式 memory OR redis OR dist
+    distPath: "./resource/data/distCacheDb" #使用磁盘缓存时配置数据缓存的目录
+    prefix: "gFastV3Cache:" #缓存前缀
